@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Fetch Data API</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="box">
+    <div class="new1" onclick="showfunction(modal_show)" style="box-shadow: 5px 8px 5px #aaaaaa;">ADD USER</div>
+    <div id="error" class="none">Error Found</div> 
+    <div class="table">
+      <table cellspacing="0" border="1px solid">
+        <tr>
+          <th>ID</th>
+          <th>NAME</th> 
+          <th>SHOW  EDIT DELETE</th>
+        </tr>
+
+        <tbody id="takedata"></tbody>
+      </table>
+    </div>
+
+      
+    <!-- pagination -->
+
+    <div id="paginations"> 
+      <span name="back" id="back"></span>
+      <span name="backpage" id="backpage"></span>
+      <span name="curpage" id="curpage"></span>
+      <span name="nextpage" id="nextpage"></span>
+      <span name="next" id="next"></span>
+    </div>
+
+     <!-- pagination  -->
+
+      
+    <div id="modal_show" class="modal none">
+      <div class="fixed">
+
+        <div class="close">Close</div> 
+
+        <form id="form">
+          <input type="text" id="id" placeholder="ID" name="id">
+
+          <input type="text" id="name" placeholder="Name" name="name">
+
+          <input type="text" id="email" placeholder="Email" name="email">
+            
+          <input type="text" id="gender" placeholder="Gender" name="gender">
+
+          <input type="text" id="status" placeholder="Status" name="status">
+           
+          <div style="background-color: #3cb371" class="submit" onclick="davedata()"> Apply</div>
+        </form>
+
+      </div>
+    </div>
+
+
+    <!-- update  -->
+
+
+    <div id="editusers" class="modal none">
+      <div class="fixed"><h2>User Information</h2> 
+        <div class="close" >Close</div> 
+        <div id="updatedata"></div> 
+      </div>  
+    </div>
+
+
+    <!-- update user -->
+
+
+    <div id="users" class="modal none">
+      <div class="fixed">
+        <div class="close">Close</div> 
+
+        <div class="table">
+          <table cellspacing="0" border="1px solid">
+            <tr>
+              <th>Id</th>
+              <th>Name</th> 
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Status</th>
+            </tr>
+            <tr id="single_data"> </tr>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript" src="fetch.js"></script>
+  </body>
+</html>
