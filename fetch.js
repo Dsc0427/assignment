@@ -59,7 +59,13 @@ function showrec(valuee) {
 
   tdd = "";
 
-  fetch("https://gorest.co.in/public-api/users?id=" + valshow)
+  fetch("https://gorest.co.in/public-api/users?id=" + valshow,{
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
+  })
     .then((data) => {
       return data.json()
     })
@@ -127,7 +133,13 @@ function loaddata() {
 
   let url = `https://gorest.co.in/public-api/users?page=${pagen}`;
 
-  fetch(url)
+  fetch(url,{
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
+  })
     .then((data) => {
       return data.json()
     })
@@ -204,7 +216,13 @@ function editrec(valuee) {
 
   tdd = "";
 
-  fetch("https://gorest.co.in/public-api/users?id=" + valshow)
+  fetch("https://gorest.co.in/public-api/users?id=" + valshow, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
+  })
     .then((data) => {
       return data.json()
     })
@@ -261,8 +279,10 @@ function update_data(idupdate) {
     method: 'PUT',
     body: dataaa,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
   })
     .then((response) => {
       return response.json()
@@ -270,7 +290,8 @@ function update_data(idupdate) {
     })
 
     .then((json) => {
-      alert("finel update result : " + json.data.message);
+      location.reload();
+      alert("User Detail Update Successfully");
 
       for (let j = 0; j < modal_close.length; j++) {
         modal[j].classList.remove('block')
@@ -318,33 +339,30 @@ function davedata() {
     method: 'POST',
     body: dataaa,
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
   })
-    .then((response) => response.json())
-    .then((json) => {
+  .then((response) => response.json())
+  .then((json) => {
+    location.reload();
+    alert("User Created Successfully");
+    ;
 
-      alert("finel Insert result : " + json.data.message);
-      ;
+    var form = document.getElementById("form");
 
-      var form = document.getElementById("form");
+    for (let j = 0; j < modal_close.length; j++) {
+      modal[j].classList.remove('block')
+      modal[j].classList.add('none')
+    }
+    form.reset();
 
-      for (let j = 0; j < modal_close.length; j++) {
-        modal[j].classList.remove('block')
-        modal[j].classList.add('none')
-      }
-      form.reset();
-
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-
-
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
-
-
-
 
 // delete 
 
@@ -356,11 +374,17 @@ function deleterec(iddd) {
 
   fetch(urll, {
     method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ACCESS-TOKEN'
+    }
   }).then((asdf) => {
     return asdf.json();
   })
     .then((asdf) => {
-      alert("Delete Message : " + asdf.data.message);
+      location.reload();
+      alert("User Deleted");
     })
     ;
 }
